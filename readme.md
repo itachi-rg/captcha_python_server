@@ -1,4 +1,4 @@
-i# Rhel 6
+# Rhel 6
 
 ## Setup Yum repository
 
@@ -110,3 +110,23 @@ conda install dill
 conda install lxml
 
 ```
+
+## Add the following files from the captcha NN 
+
+Python scripts 
+``` 
+captcha_model_build.py
+neurallib.py
+captcha_pre_process.py
+```
+
+Data files
+```
+image_class_dictionary.pkl
+temp_data.pkl
+```
+
+
+
+
+
