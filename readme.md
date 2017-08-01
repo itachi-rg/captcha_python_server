@@ -57,6 +57,10 @@ chmod 777 Miniconda3-latest-Linux-x86_64.sh
 
 `openssl req -x509 -newkey rsa:4096 -keyout privateKey.key -out cert.crt -days 3650`
 
+But this will ask for passphrase everytime the server is launched. Remove the passphrase using 
+
+`openssl rsa -in privateKey.key -out privateKey.key`
+
 ## Run server
 ```
 python server.py
@@ -127,6 +131,9 @@ temp_data.pkl
 ```
 
 
-
+## Finally run the server in the background
+```
+nohup python server.py &
+```
 
 
