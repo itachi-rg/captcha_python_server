@@ -49,6 +49,10 @@ chmod 777 Miniconda3-latest-Linux-x86_64.sh
 
 `pip install flask`
 
+## To allow cross-domain calls to this server
+
+`pip install flask-cors`
+
 ## Clone the captcha_server from github
 
 ` `

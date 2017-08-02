@@ -6,10 +6,14 @@ import urllib
 from captcha_model_build import test
 import neurallib as nl
 
+from flask_cors import CORS
+
 context = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2)
 context.load_cert_chain('cert.crt', 'privateKey.key')
 
 app = Flask(__name__)
+CORS(app)
+
 model = nl.NN().readNNModel('temp_data.pkl')
 
 @app.route("/predict")
