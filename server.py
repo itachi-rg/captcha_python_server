@@ -6,15 +6,14 @@ import urllib
 from captcha_model_build import test
 import neurallib as nl
 
-from flask_cors import CORS
-
-context = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2)
-context.load_cert_chain('cert.crt', 'privateKey.key')
 
 app = Flask(__name__)
-CORS(app)
 
 model = nl.NN().readNNModel('temp_data.pkl')
+
+@app.route("/")
+def homePage():
+  return "Captcha hosted : make /predict call"
 
 @app.route("/predict")
 def predict():
@@ -26,7 +25,8 @@ def predict():
   with open("tmp_img.png", "wb") as fh:
     fh.write(base64.b64decode(png_data[1]))
   output_str = test(model,"tmp_img.png")
+  print("========= Output Value ========= : ", output_str)
   return output_str
 
 if __name__ == "__main__":
-  app.run(host= '0.0.0.0',port=80, ssl_context=context, threaded=True)
+  app.run(host='0.0.0.0',port=8010)

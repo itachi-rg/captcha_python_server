@@ -1,4 +1,6 @@
 __pycache__/
 nohup.out
+cert.crt
 privateKey.key
 temp_data.pkl
+tmp_img.png

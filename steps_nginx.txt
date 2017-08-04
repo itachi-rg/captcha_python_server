@@ -1,0 +1,50 @@
+Set selinx policy from enforcing to permissive
+vi /etc/selinux/config
+
+restart 
+shutdown -r now
+
+#Change ipv6
+vi /etc/wgetrc 
+ 
+cd /etc/yum.repos.d
+
+wget http://public-yum.oracle.com/RPM-GPG-KEY-oracle-ol6 -O /etc/pki/rpm-gpg/RPM-GPG-KEY-oracle
+
+gpg --quiet --with-fingerprint /etc/pki/rpm-gpg/RPM-GPG-KEY-oracle
+
+wget http://public-yum.oracle.com/public-yum-ol6.repo
+
+vi public-yum-ol6.repo 
+
+wget http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+
+rpm -ivh epel-release-6-8.noarch.rpm
+
+yum install nginx
+
+wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+
+chmod 755 Miniconda3-latest-Linux-x86_64.sh 
+./Miniconda3-latest-Linux-x86_64.sh 
+
+pip install uwsgi
+
+uwsgi --ini project.ini 
+
+[root@rg-003-rhel6-u8 ~]# git clone https://github.com/itachi-rg/captcha_python_server.git captcha_server
+
+pip install flask-cors scipy scikit-learn opencv-python opencv-contrib-python dill lxml
+
+
+vi /etc/nginx/nginx.conf
+
+#Test if configuration file syntax is valid
+nginx -t
+
+service nginx restart
+
+openssl req -x509 -newkey rsa:4096 -keyout privateKey.key -out cert.crt -days 3650
+
+openssl rsa -in privateKey.key -out privateKey.key
+
