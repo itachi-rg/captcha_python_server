@@ -1,0 +1,22 @@
+sudo passwd
+
+yum -y install gcc wget tar bzip2 git nginx 
+
+wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+chmod 777 Miniconda3-latest-Linux-x86_64.sh 
+./Miniconda3-latest-Linux-x86_64.sh 
+
+pip install uwsgi flask scipy scikit-learn opencv-python opencv-contrib-python dill lxml
+
+git clone -b captcha_image_class https://github.com/itachi-rg/captcha.git captcha_image
+git clone https://github.com/itachi-rg/captcha_python_server.git captcha_server
+
+cd captcha_server
+openssl req -x509 -newkey rsa:4096 -keyout privateKey.key -out cert.crt -days 3650
+
+openssl rsa -in privateKey.key -out privateKey.key
+
+vi /etc/selinux/conf
+selinux has to be changed to permissive. Otherwise nginx service start also might fail with failed to load cert.crt error
+
+
