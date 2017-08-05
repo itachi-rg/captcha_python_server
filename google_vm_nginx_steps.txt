@@ -20,3 +20,9 @@ vi /etc/selinux/conf
 selinux has to be changed to permissive. Otherwise nginx service start also might fail with failed to load cert.crt error
 
 For ssh or scp permission denied, solve it by amending the /etc/ssh/sshd_config 'PasswordAuthentication yes' then re-started the service 'sudo systemctl restart sshd'
+Also add allowd users and restart sshd process
+/etc/ssh/sshd_config
+
+AllowUsers root rohan_gangaraju
+
+Pam not allowing root ssh, so have to settle for non-root access for now
