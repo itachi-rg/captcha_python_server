@@ -19,4 +19,4 @@ openssl rsa -in privateKey.key -out privateKey.key
 vi /etc/selinux/conf
 selinux has to be changed to permissive. Otherwise nginx service start also might fail with failed to load cert.crt error
 
-
+For ssh or scp permission denied, solve it by amending the /etc/ssh/sshd_config 'PasswordAuthentication yes' then re-started the service 'sudo systemctl restart sshd'
