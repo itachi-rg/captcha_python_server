@@ -9,7 +9,7 @@ import neurallib as nl
 
 app = Flask(__name__)
 
-model = nl.NN().readNNModel('temp_data.pkl')
+model = nl.NN().readNNModel('model.pkl')
 
 @app.route("/")
 def homePage():
